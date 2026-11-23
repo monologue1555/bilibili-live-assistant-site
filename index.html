@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>直播小助手 · B站直播间的自动答谢与礼物截图</title>
+    <meta
+      name="description"
+      content="直播小助手是一款给 B 站主播用的 Edge 扩展：收到付费礼物自动答谢，礼物动画自动连拍截图，常用弹幕按节奏轮换，还能自动点赞。全部在本机运行。"
+    />
+    <meta name="theme-color" content="#0a0d13" />
+    <meta property="og:title" content="直播小助手 · 把感谢、截图和场控交给它" />
+    <meta
+      property="og:description"
+      content="B站直播间的自动答谢、礼物截图、弹幕库和自动点赞。一个 Edge 扩展，本地运行。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content="直播小助手" />
+    <meta property="og:url" content="https://monologue1555.github.io/bilibili-live-assistant-site/" />
+    <meta property="og:image" content="https://monologue1555.github.io/bilibili-live-assistant-site/assets/og-cover.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="直播小助手弹窗与礼物答谢界面" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="直播小助手 · 把感谢、截图和场控交给它" />
+    <meta
+      name="twitter:description"
+      content="B站直播间的自动答谢、礼物截图、弹幕库和自动点赞。一个 Edge 扩展，本地运行。"
+    />
+    <meta name="twitter:image" content="https://monologue1555.github.io/bilibili-live-assistant-site/assets/og-cover.jpg" />
+    <link rel="canonical" href="https://monologue1555.github.io/bilibili-live-assistant-site/" />
+    <link rel="icon" type="image/png" href="assets/icon128.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "直播小助手",
+        "softwareVersion": "1.0.0",
+        "operatingSystem": "Windows 10, Windows 11",
+        "applicationCategory": "BrowserApplication",
+        "description": "B站直播间的自动答谢、礼物截图、弹幕库和自动点赞 Edge 扩展，本机运行。",
+        "offers": [
+          { "@type": "Offer", "price": "10", "priceCurrency": "CNY", "description": "早鸟买断（前 10 名）" },
+          { "@type": "Offer", "price": "30", "priceCurrency": "CNY", "description": "标准买断" }
+        ],
+        "author": { "@type": "Person", "name": "Monologue", "url": "https://ifdian.net/a/monologuen" }
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#top">跳到主要内容</a>
+    <header class="nav">
+      <div class="nav-in">
+        <a class="brand" href="#top" aria-label="直播小助手首页">
+          <img src="assets/icon128.png" width="34" height="34" alt="" />
+          <span>直播小助手</span>
+          <small>v1.0.0</small>
+        </a>
+        <nav class="nav-links" aria-label="页面导航">
+          <a href="#features">功能</a>
+          <a href="#demo">演示</a>
+          <a href="#install">安装</a>
+          <a href="#get">获取</a>
+          <a href="#faq">常见问题</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-quiet" href="https://ifdian.net/a/monologuen" target="_blank" rel="noopener">爱发电</a>
+          <a class="btn btn-small" href="#get">获取完整版</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span class="hand">直播助手运行中</span>
+            <span class="eyebrow-sep">/</span>
+            <span class="mono">B站直播 · Edge 扩展</span>
+          </p>
+          <h1>礼物有人谢，<br />弹幕有人发，<br /><span class="underline">画面有人记。</span></h1>
+          <p class="lede">
+            直播小助手在直播间里替你答谢付费礼物、连拍礼物动画、按节奏发常用弹幕，还能自动点赞。全部在本机运行，不需要安装额外客户端。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#get">获取完整版</a>
+            <a class="btn btn-ghost" href="#features">看看它能做什么</a>
+          </div>
+          <ul class="hero-meta">
+            <li>Windows 10/11</li>
+            <li>Edge / Chrome</li>
+            <li>不上传账号数据</li>
+            <li>截图存本机</li>
+          </ul>
+        </div>
+
+        <div class="hero-art">
+          <div class="screen-wrap">
+            <div class="screen">
+              <div class="screen-bar">
+                <span class="screen-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="screen-title">直播小助手</span>
+                <span class="screen-tag">扩展弹窗</span>
+              </div>
+              <img
+                src="assets/hero.png"
+                width="840"
+                height="1200"
+                fetchpriority="high"
+                decoding="async"
+                alt="直播小助手弹窗：连接状态、今日统计和自动答谢设置"
+              />
+            </div>
+            <div class="float float-thanks">
+              <span class="float-dot" aria-hidden="true"></span>
+              <span>已感谢 <strong>小明</strong></span>
+            </div>
+            <div class="float float-shots">
+              <strong>5</strong>
+              <span>张已保存</span>
+            </div>
+          </div>
+          <div class="hero-glow" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="specs" aria-label="产品规格">
+        <div><strong>0.6 秒</strong><span>截图间隔</span></div>
+        <div><strong>5–43 张</strong><span>每份礼物</span></div>
+        <div><strong>20 条</strong><span>常用弹幕</span></div>
+        <div><strong>1000 赞</strong><span>每日上限</span></div>
+      </section>
+
+      <section id="features" class="section features">
+        <header class="section-head">
+          <p class="kicker">功能</p>
+          <h2>一场直播下来，它替你做了这些</h2>
+          <p>不是又一个弹幕机器人，而是把答谢、记录和场控放进同一个弹窗里。</p>
+        </header>
+
+        <article class="feature">
+          <div class="feature-copy">
+            <p class="feature-tag">礼物答谢</p>
+            <h3>不用一边看弹幕，一边谢礼物</h3>
+            <p>收到付费礼物自动发送感谢弹幕，连击合并、舰长模板、盲盒和醒目留言都照顾到。</p>
+            <ul class="checks">
+              <li>同一用户同一礼物连击合并，只谢一次</li>
+              <li>舰长 / 提督 / 总督可以用单独模板</li>
+              <li>盲盒按实付判断，SC 和大航海可以单独开关</li>
+            </ul>
+          </div>
+          <div class="feature-art">
+            <div class="shot-frame">
+              <img
+                src="assets/answer.png"
+                width="780"
+                height="1055"
+                loading="lazy"
+                decoding="async"
+                alt="礼物答谢设置：模板、预览和发送规则"
+              />
+            </div>
+          </div>
+        </article>
+
+        <article class="feature feature-reverse">
+          <div class="feature-copy">
+            <p class="feature-tag">礼物截图</p>
+            <h3>每一份礼物，都留下完整画面</h3>
+            <p>礼物动画开始后按节奏连拍右侧完整聊天栏，不用一边直播一边手动补拍。</p>
+            <ul class="checks">
+              <li>每 0.6 秒一张，超长动画最多 43 张</li>
+              <li>醒目留言固定 5 张，不受最低价值限制</li>
+              <li>按日期 / 用户 / 礼物自动归档</li>
+            </ul>
+          </div>
+          <div class="feature-art">
+            <div class="shot-frame">
+              <img
+                src="assets/gift-shot.png"
+                width="780"
+                height="624"
+                loading="lazy"
+                decoding="async"
+                alt="礼物截图设置：首张延迟、最低价值和测试连拍"
+              />
+            </div>
+          </div>
+        </article>
+
+        <div class="rail">
+          <article>
+            <p class="feature-tag">弹幕库</p>
+            <h3>把常用的话，按节奏发出去</h3>
+            <p>最多 20 条常用弹幕，每条独立计时或按顺序轮流；遇到限流会等待重试，不会把失败当成已发送。</p>
+            <div class="shot-frame rail-shot">
+              <img
+                src="assets/library.png"
+                width="780"
+                height="944"
+                loading="lazy"
+                decoding="async"
+                alt="弹幕库：常用弹幕和自动轮换设置"
+              />
+            </div>
+          </article>
+          <article>
+            <p class="feature-tag">自动点赞</p>
+            <h3>把每日赞，稳稳点满</h3>
+            <p>按设置的间隔和每次数量点赞，达到每日上限自动关闭，不进入弹幕队列。</p>
+            <div class="shot-frame rail-shot">
+              <img
+                src="assets/like.png"
+                width="780"
+                height="538"
+                loading="lazy"
+                decoding="async"
+                alt="自动点赞设置：间隔、每次数量和每日上限"
+              />
+            </div>
+          </article>
+          <article>
+            <p class="feature-tag">晚安回复</p>
+            <h3>下播前的最后一句，也有人回应</h3>
+            <p>观众说“晚安”“睡了”时自动回复，同一观众有冷却，不会刷屏。</p>
+            <div class="shot-frame rail-shot">
+              <img
+                src="assets/goodnight.png"
+                width="780"
+                height="575"
+                loading="lazy"
+                decoding="async"
+                alt="晚安回复设置：模板和同一观众冷却"
+              />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="demo" class="section demo">
+        <header class="section-head">
+          <p class="kicker">演示</p>
+          <h2>不到两分钟，看完整套流程</h2>
+          <p>从绑定直播间到礼物截图、弹幕库和自动点赞，按顺序走一遍。</p>
+        </header>
+        <div class="demo-frame">
+          <video
+            controls
+            playsinline
+            preload="none"
+            poster="assets/usage-guide-poster.jpg"
+            width="1920"
+            height="1080"
+            aria-label="直播小助手使用指南演示视频"
+          >
+            <source src="assets/usage-guide.mp4" type="video/mp4" />
+            你的浏览器不支持内嵌视频，可以直接<a href="assets/usage-guide.mp4">下载观看</a>。
+          </video>
+        </div>
+        <p class="demo-caption">
+          <span><strong>带中文配音</strong> · 1 分 51 秒</span>
+          <span>演示环境使用模拟数据，实际界面以当前版本为准。</span>
+        </p>
+      </section>
+
+      <section id="install" class="section install">
+        <header class="section-head">
+          <p class="kicker">安装</p>
+          <h2>三步放进你的直播间</h2>
+          <p>不需要安装客户端，也不需要配置服务器。一个 Edge 扩展就够。以下以 Edge 为例；Chrome 的按钮名称见常见问题。</p>
+        </header>
+        <ol class="steps">
+          <li>
+            <span class="step-num">1</span>
+            <h3>解压压缩包</h3>
+            <p>在爱发电下载 zip，右键「全部解压缩」，得到 <code>bilibili-live-assistant-v1.0.0</code> 文件夹；打开后应能直接看到 <code>manifest.json</code>。放到固定位置，装好后不要移动或删除。</p>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <h3>加载扩展</h3>
+            <p>打开 <code>edge://extensions/</code>，点左下角「开发人员模式」；再点右上角「开发人员选项」里的「加载解压缩的扩展」，选择直接包含 <code>manifest.json</code> 的文件夹——不是 zip，也不是上一层。</p>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <h3>打开直播间</h3>
+            <p>刷新 B 站直播间；没看到图标就点右上角拼图固定。点图标打开弹窗，在「连接与房间」点「绑定当前」，确认「已连接 / 已认证」；需要时点「测试连拍」。</p>
+          </li>
+        </ol>
+        <div class="install-demo">
+          <div class="install-demo-copy">
+            <p class="feature-tag">48 秒安装演示</p>
+            <h3>跟着视频走一遍</h3>
+            <p>从解压 zip、打开开发人员模式，到选择文件夹和刷新直播间，带中文配音。第一次装建议先看它。</p>
+            <a class="btn btn-ghost" href="assets/usage-guide-install.mp4" target="_blank" rel="noopener">在新窗口打开</a>
+          </div>
+          <div class="demo-frame install-demo-frame">
+            <video
+              controls
+              playsinline
+              preload="none"
+              poster="assets/usage-guide-install-poster.jpg"
+              width="1920"
+              height="1080"
+              aria-label="直播小助手 48 秒安装演示"
+            >
+              <source src="assets/usage-guide-install.mp4" type="video/mp4" />
+              你的浏览器不支持内嵌视频，可以直接<a href="assets/usage-guide-install.mp4">下载观看</a>。
+            </video>
+          </div>
+        </div>
+        <p class="install-note">
+          提示「清单文件缺失 / 无法加载扩展程序」就是文件夹选错了；如果解压后只看到另一个同名文件夹，再进一层。截图时需要让直播间标签页保持前台；礼物答谢、弹幕库和自动点赞可以在后台运行。
+        </p>
+      </section>
+
+      <section id="get" class="section get">
+        <div class="get-copy">
+          <p class="kicker">获取</p>
+          <h2>先把它放进你的直播间</h2>
+          <p>
+            完整版包含自动答谢、礼物截图、弹幕库、晚安回复和自动点赞。一次买断，后续版本免费更新，不是按月订阅；购买后通过爱发电私信发送下载链接和安装说明。
+          </p>
+          <ul class="checks">
+            <li>一个压缩包，不需要注册扩展账号</li>
+            <li>设置保存在浏览器里，换电脑可以重新配置</li>
+            <li>后续版本在爱发电发布，覆盖安装即可</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-top">
+            <span>买断制</span>
+            <small>限量 10 份</small>
+          </div>
+          <div class="price-line">
+            <div><strong>¥10</strong><span>前 10 名</span></div>
+            <div><strong>¥30</strong><span>之后</span></div>
+          </div>
+          <ul class="price-list">
+            <li>一次买断，后续更新免费</li>
+            <li>完整功能，不限使用天数</li>
+            <li>持续维护，B 站改版会跟进</li>
+            <li>本机运行，不上传账号数据</li>
+            <li>个人自用，请勿转售</li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="https://ifdian.net/a/monologuen" target="_blank" rel="noopener">去爱发电获取</a>
+          <p class="price-req">Windows 10/11 · Edge / Chrome · 需登录 B 站账号</p>
+          <p class="price-note">前 10 名 ¥10，之后 ¥30。价格与库存以爱发电商品页为准。虚拟商品，购买前请确认浏览器和系统兼容。</p>
+        </div>
+      </section>
+
+      <section id="faq" class="section faq">
+        <header class="section-head">
+          <p class="kicker">常见问题</p>
+          <h2>买之前，你可能会问</h2>
+        </header>
+        <div class="faq-list">
+          <details>
+            <summary>支持哪些浏览器？</summary>
+            <p>Edge 和 Chrome 内核的浏览器都可以，目前在 Edge 上测试得最多。Edge 在扩展页左下角打开「开发人员模式」，按钮叫「加载解压缩的扩展」；Chrome 在扩展页右上角打开「开发者模式」，按钮叫「加载已解压的扩展程序」。不需要上架应用商店。</p>
+          </details>
+          <details>
+            <summary>我的电脑能用吗？</summary>
+            <p>目前按 Windows 10/11 上的 Edge 和 Chrome 内核浏览器测试和交付，需要登录 B 站账号；手机和 macOS 没有测试，不建议购买。截图时还需要让直播间标签页保持前台。</p>
+          </details>
+          <details>
+            <summary>付款后怎么收到下载链接？</summary>
+            <p>付款后通过爱发电私信发送下载链接和安装说明，请留意站内信；收到后先解压压缩包，再按页面上的三步加载扩展。</p>
+          </details>
+          <details>
+            <summary>安装时提示“清单文件缺失”或“无法加载扩展程序”？</summary>
+            <p>说明文件夹层级选错了。回到解压后的目录，进入能直接看到 <code>manifest.json</code> 的那一层再选；不要选 zip、它的上一级，也不要选 <code>manifest.json</code> 文件本身。找不到开关时，开发人员模式在扩展页左下角，打开后「加载解压缩的扩展」在右上角「开发人员选项」里。装好后不要移动或删除这个文件夹，否则扩展会失效。</p>
+          </details>
+          <details>
+            <summary>会不会触发风控或者封号？</summary>
+            <p>不能保证。自动发弹幕、自动点赞都属于自动化操作，频率过高可能触发平台风控。扩展默认使用保守的发送间隔和每日上限，但仍需要你遵守 B 站的规则，风险由使用者自行承担。</p>
+          </details>
+          <details>
+            <summary>为什么截图要求直播间保持前台？</summary>
+            <p>浏览器只允许截取当前可见的标签页。截图时请让直播间标签页保持前台；礼物答谢、弹幕库和自动点赞不受这个限制。</p>
+          </details>
+          <details>
+            <summary>会上传我的账号数据吗？</summary>
+            <p>不会。扩展在本机运行，设置保存在浏览器存储里，截图保存在本机下载目录；不采集密码，也不会上传 cookie 或聊天记录。</p>
+          </details>
+          <details>
+            <summary>买断之后还要再付费吗？</summary>
+            <p>不用。一次买断，后续版本免费更新；会持续维护，B 站改版导致的问题会跟进修复，没有按月订阅。</p>
+          </details>
+          <details>
+            <summary>怎么更新？</summary>
+            <p>下载新版本压缩包，解压后覆盖原来的文件夹，再到扩展页点一次“重新加载”，刷新直播间即可。设置会保留，买断用户更新免费。</p>
+          </details>
+          <details>
+            <summary>支持多直播间吗？</summary>
+            <p>一次绑定一个直播间。留空房间号会跟随当前打开的直播间，但不建议同时开多个直播间同时运行截图。</p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-in">
+        <div class="footer-brand">
+          <img src="assets/icon128.png" width="28" height="28" alt="" />
+          <span>直播小助手</span>
+        </div>
+        <p>非哔哩哔哩官方工具，与哔哩哔哩无关联。自动化操作存在平台风控风险，请遵守平台规则。</p>
+        <div class="footer-links">
+          <a href="https://ifdian.net/a/monologuen" target="_blank" rel="noopener">爱发电</a>
+          <a href="https://github.com/monologue1555" target="_blank" rel="noopener">GitHub</a>
+          <a href="#top">回到顶部</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
