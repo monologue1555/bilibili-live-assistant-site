@@ -8,7 +8,23 @@
       name="description"
       content="直播小助手是一款给 B 站主播用的 Edge 扩展：收到付费礼物自动答谢，礼物动画自动连拍截图，常用弹幕按节奏轮换，还能自动点赞。全部在本机运行。"
     />
-    <meta name="theme-color" content="#0a0d13" />
+    <meta name="theme-color" content="#0a0d13" id="themeColor" />
+    <script>
+      (() => {
+        const key = 'bili-live-assistant-theme';
+        let mode = 'auto';
+        try {
+          mode = localStorage.getItem(key) || 'auto';
+        } catch {}
+        if (mode !== 'light' && mode !== 'dark') mode = 'auto';
+        const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const resolved = mode === 'auto' ? (dark ? 'dark' : 'light') : mode;
+        document.documentElement.dataset.theme = resolved;
+        document.documentElement.dataset.themeMode = mode;
+        const meta = document.getElementById('themeColor');
+        if (meta) meta.setAttribute('content', resolved === 'dark' ? '#0a0d13' : '#f6f7f9');
+      })();
+    </script>
     <meta property="og:title" content="直播小助手 · 把感谢、截图和场控交给它" />
     <meta
       property="og:description"
@@ -18,7 +34,7 @@
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:site_name" content="直播小助手" />
     <meta property="og:url" content="https://monologue1555.github.io/bilibili-live-assistant-site/" />
-    <meta property="og:image" content="https://monologue1555.github.io/bilibili-live-assistant-site/assets/og-cover.jpg?v=3" />
+    <meta property="og:image" content="https://monologue1555.github.io/bilibili-live-assistant-site/assets/og-cover.jpg?v=4" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="直播小助手弹窗与礼物答谢界面" />
@@ -28,10 +44,10 @@
       name="twitter:description"
       content="B站直播间的自动答谢、礼物截图、弹幕库和自动点赞。一个 Edge 扩展，本地运行。"
     />
-    <meta name="twitter:image" content="https://monologue1555.github.io/bilibili-live-assistant-site/assets/og-cover.jpg?v=3" />
+    <meta name="twitter:image" content="https://monologue1555.github.io/bilibili-live-assistant-site/assets/og-cover.jpg?v=4" />
     <link rel="canonical" href="https://monologue1555.github.io/bilibili-live-assistant-site/" />
     <link rel="icon" type="image/png" href="assets/icon128.png" />
-    <link rel="stylesheet" href="styles.css?v=3" />
+    <link rel="stylesheet" href="styles.css?v=4" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -66,6 +82,14 @@
           <a href="#faq">常见问题</a>
         </nav>
         <div class="nav-actions">
+          <label class="theme-picker">
+            <span class="sr-only">主题</span>
+            <select id="themeSelect" aria-label="主题">
+              <option value="auto">跟随系统</option>
+              <option value="light">浅色</option>
+              <option value="dark">深色</option>
+            </select>
+          </label>
           <a class="btn btn-quiet" href="https://ifdian.net/a/monologuen" target="_blank" rel="noopener">爱发电</a>
           <a class="btn btn-small" href="#get">获取完整版</a>
         </div>
@@ -106,7 +130,7 @@
                 <span class="screen-tag">扩展弹窗</span>
               </div>
               <img
-                src="assets/hero.png?v=3"
+                src="assets/hero.png?v=4"
                 width="840"
                 height="1200"
                 fetchpriority="high"
@@ -155,9 +179,9 @@
           <div class="feature-art">
             <div class="shot-frame">
               <img
-                src="assets/answer.png?v=3"
-                width="780"
-                height="1055"
+                src="assets/answer.png?v=4"
+                width="840"
+                height="1103"
                 loading="lazy"
                 decoding="async"
                 alt="礼物答谢设置：模板、预览和发送规则"
@@ -180,9 +204,9 @@
           <div class="feature-art">
             <div class="shot-frame">
               <img
-                src="assets/gift-shot.png?v=3"
-                width="780"
-                height="624"
+                src="assets/gift-shot.png?v=4"
+                width="840"
+                height="672"
                 loading="lazy"
                 decoding="async"
                 alt="礼物截图设置：首张延迟、最低价值和测试连拍"
@@ -198,9 +222,9 @@
             <p>最多 20 条常用弹幕，每条独立计时或按顺序轮流；遇到限流会等待重试，不会把失败当成已发送。</p>
             <div class="shot-frame rail-shot">
               <img
-                src="assets/library.png?v=3"
-                width="780"
-                height="944"
+                src="assets/library.png?v=4"
+                width="840"
+                height="992"
                 loading="lazy"
                 decoding="async"
                 alt="弹幕库：常用弹幕和自动轮换设置"
@@ -213,9 +237,9 @@
             <p>按设置的间隔和每次数量点赞，达到每日上限自动关闭，不进入弹幕队列。</p>
             <div class="shot-frame rail-shot">
               <img
-                src="assets/like.png?v=3"
-                width="780"
-                height="538"
+                src="assets/like.png?v=4"
+                width="840"
+                height="586"
                 loading="lazy"
                 decoding="async"
                 alt="自动点赞设置：间隔、每次数量和每日上限"
@@ -228,9 +252,9 @@
             <p>观众说“晚安”“睡了”时自动回复，同一观众有冷却，不会刷屏。</p>
             <div class="shot-frame rail-shot">
               <img
-                src="assets/goodnight.png?v=3"
-                width="780"
-                height="575"
+                src="assets/goodnight.png?v=4"
+                width="840"
+                height="623"
                 loading="lazy"
                 decoding="async"
                 alt="晚安回复设置：模板和同一观众冷却"
@@ -415,5 +439,42 @@
         </div>
       </div>
     </footer>
+    <script>
+      (() => {
+        const key = 'bili-live-assistant-theme';
+        const select = document.getElementById('themeSelect');
+        const media = window.matchMedia('(prefers-color-scheme: dark)');
+        const meta = document.getElementById('themeColor');
+        const read = () => {
+          try {
+            const value = localStorage.getItem(key);
+            return value === 'light' || value === 'dark' ? value : 'auto';
+          } catch {
+            return 'auto';
+          }
+        };
+        const apply = (mode) => {
+          const resolved = mode === 'auto' ? (media.matches ? 'dark' : 'light') : mode;
+          document.documentElement.dataset.theme = resolved;
+          document.documentElement.dataset.themeMode = mode;
+          if (select) select.value = mode;
+          if (meta) meta.setAttribute('content', resolved === 'dark' ? '#0a0d13' : '#f6f7f9');
+        };
+        apply(read());
+        if (select) {
+          select.addEventListener('change', () => {
+            try {
+              localStorage.setItem(key, select.value);
+            } catch {}
+            apply(select.value);
+          });
+        }
+        const onSystemChange = () => {
+          if (read() === 'auto') apply('auto');
+        };
+        if (media.addEventListener) media.addEventListener('change', onSystemChange);
+        else if (media.addListener) media.addListener(onSystemChange);
+      })();
+    </script>
   </body>
 </html>
